@@ -1,0 +1,52 @@
+/* App.css */
+@import "/node_modules/swiper/swiper-bundle.min.css";
+@import "/node_modules/slick-carousel/slick/slick.css";
+@import "/node_modules/slick-carousel/slick/slick-theme.css";
+
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5; /* Sayfa arka plan rengi */
+  text-align: center;
+}
+
+h1 {
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+.slick-prev,
+.slick-next {
+  width: 40px; /* Ok genişliği */
+  height: 40px; /* Ok yüksekliği */
+  background-color: #1976d2 ; /* Arka plan rengi */
+  border-radius: 50%; /* Yuvarlak yapar */
+  z-index: 1; /* Diğer içeriklerin üstünde olmasını sağlar */
+}
+.slick-prev {
+  left: -50px; /* Sol konum */
+  background: url('path/to/your/left-arrow-icon.png') no-repeat center center; /* Sol ok simgesi */
+}
+
+.slick-next {
+  right: -50px; /* Sağ konum */
+  background: url('path/to/your/right-arrow-icon.png') no-repeat center center; /* Sağ ok simgesi */
+}
+.slick-prev:hover,
+.slick-next:hover {
+  background-color: #dddddd; /* Hover durumunda arka plan rengi */
+  
+}
+.slick-prev:before,
+.slick-next:before {
+  color: #1976d2; /* Varsayılan ok işaretlerini gizler */
+}
