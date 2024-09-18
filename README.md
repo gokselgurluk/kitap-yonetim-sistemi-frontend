@@ -55,10 +55,10 @@ Projede kullanılan teknolojiler:
 
 <h2 id="önemli">Önemli Dosyalar</h2>
 <p align="justify"> 
-src/components/Book/BookList.js - Kitap listesini gösteren bileşen.
-src/components/Book/BookForm.js - Yeni kitap eklemek için form bileşeni.
-src/components/Book/UpdateModal.js - Kitap güncelleme işlemi için modal bileşeni.
-src/pages/BookPage.js - Kitap işlemleri sayfası.
+src/components/Book/BookList.js - Kitap listesini gösteren bileşen.<br>
+src/components/Book/BookForm.js - Yeni kitap eklemek için form bileşeni.<br>
+src/components/Book/UpdateModal.js - Kitap güncelleme işlemi için modal bileşeni.<br>
+src/pages/BookPage.js - Kitap işlemleri sayfası.<br>
 </p>
 <!-- SETUP AND LAUNCH -->
 
@@ -94,3 +94,5 @@ npm run dev
 ![GIF Açıklaması](projeGIF.gif)
  
 </p>
+
+<h4> I would like to thank Kerem Yardan for his support. </h4>
