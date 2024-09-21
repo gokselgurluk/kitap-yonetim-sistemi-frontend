@@ -68,7 +68,7 @@ function ResponsiveAppBar({ isAuth, handleLogout }) {
               textDecoration: 'none',
             }}
           >
-            Book Store
+            ook Store
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -124,7 +124,7 @@ function ResponsiveAppBar({ isAuth, handleLogout }) {
               textDecoration: 'none',
             }}
           >
-            Book Store
+            ook Store
           </Typography>
           
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'center' }}>
@@ -142,10 +142,11 @@ function ResponsiveAppBar({ isAuth, handleLogout }) {
           </Box>
           
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+          <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="User Avatar" src={avatarGif} />
               </IconButton>
+            <Tooltip title="Open settings">
+              
             </Tooltip>
             {isAuth ? (
               <Button color="inherit" onClick={handleLogout}>

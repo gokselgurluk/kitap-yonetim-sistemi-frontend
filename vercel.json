@@ -1,9 +1,8 @@
 {
-    "rewrites": [
-      {
-        "source": "/api/(.*)",
-        "destination": "https://kitap-yonetim-sistemi-backend-git-gokselgurluk-dev.apps.sandbox-m3.1530.p1.openshiftapps.com/$1"
-      }
-    ]
-  }
-  
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "https://kitap-yonetim-sistemi-backend-git-gokselgurluk-dev.apps.sandbox-m3.1530.p1.openshiftapps.com/$1"
+    }
+  ]
+}
