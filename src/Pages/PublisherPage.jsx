@@ -14,10 +14,12 @@ const PublisherPage = () => {
   const [selectedPublisher, setSelectedPublisher] = useState(null);
   const [updateModalIsOpen, setUpdateModalIsOpen] = useState(false);
 
+  // API URL'sini güncelleyin
+  const API_URL = 'http://your-api-url.com/api/v1/publishers'; // Buraya gerçek API URL'sini yerleştirin
+
   // Tüm yayınevlerini çeker
-  const API_URL = '/api/v1/publishers';
   const fetchPublishers = () => {
-    axios.get(API_UR)
+    axios.get(API_URL)
       .then(response => {
         setPublishers(response.data);
         setFilteredPublishers(response.data); // Başlangıçta tüm yayınevleri gösteriliyor

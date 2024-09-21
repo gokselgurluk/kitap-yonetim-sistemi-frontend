@@ -142,12 +142,7 @@ function ResponsiveAppBar({ isAuth, handleLogout }) {
           </Box>
           
           <Box sx={{ flexGrow: 0 }}>
-          <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="User Avatar" src={avatarGif} />
-              </IconButton>
-            <Tooltip title="Open settings">
-              
-            </Tooltip>
+          
             {isAuth ? (
               <Button color="inherit" onClick={handleLogout}>
                 Logout
