@@ -14,7 +14,7 @@ const CategoryPage = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [updateModalIsOpen, setUpdateModalIsOpen] = useState(false);
 
-  const API_URL = 'http://localhost:8080/api/v1/categories';
+  const API_URL = '/api/v1/categories';
 
   const fetchCategories = () => {
     axios.get(API_URL)

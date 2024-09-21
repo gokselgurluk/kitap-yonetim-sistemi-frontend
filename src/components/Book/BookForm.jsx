@@ -17,7 +17,7 @@ const BookForm = ({ onAddBook }) => {
   // API'den mevcut yazarları getir
   const fetchAuthors = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/api/v1/authors');
+      const response = await axios.get('/api/v1/authors');
       setAuthors(response.data);
     } catch (error) {
       console.error('Yazarlar alınırken hata oluştu:', error);
@@ -27,7 +27,7 @@ const BookForm = ({ onAddBook }) => {
   // API'den mevcut yayınevlerini getir
   const fetchPublishers = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/api/v1/publishers');
+      const response = await axios.get('/api/v1/publishers');
       setPublishers(response.data);
     } catch (error) {
       console.error('Yayınevleri alınırken hata oluştu:', error);
@@ -37,7 +37,7 @@ const BookForm = ({ onAddBook }) => {
   // API'den mevcut kategorileri getir
   const fetchCategories = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/api/v1/categories');
+      const response = await axios.get('/api/v1/categories');
       setCategories(response.data);
     } catch (error) {
       console.error('Kategoriler alınırken hata oluştu:', error);

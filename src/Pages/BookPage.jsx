@@ -5,9 +5,9 @@ import UpdateModal from '../components/Book/UpdateModal';
 import BookForm from '../components/Book/BookForm';
 import ModalComponent from '../components/ModalComponent';
 
-const API_URL = 'http://localhost:8080/api/v1/books';
-const AUTHORS_URL = 'http://localhost:8080/api/v1/authors'; // Yazarlar API'si
-const PUBLISHERS_URL = 'http://localhost:8080/api/v1/publishers'; // Yayınevleri API'si
+const API_URL = '/api/v1/books';
+const AUTHORS_URL = '/api/v1/authors'; // Yazarlar API'si
+const PUBLISHERS_URL = '/api/v1/publishers'; // Yayınevleri API'si
 
 const BookPage = () => {
   const [books, setBooks] = useState([]);

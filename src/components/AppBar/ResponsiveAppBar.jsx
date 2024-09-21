@@ -12,7 +12,8 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import avatarGif from '../../images/avatar.gif'; // Correct import path
+import MenuIcon from '@mui/icons-material/Menu'; // Hamburger ikonu için import
+import avatarGif from '../../images/avatar.gif'; // Doğru import yolu
 
 const pages = [
   { name: 'Anasayfa', path: '/' },
@@ -24,7 +25,7 @@ const pages = [
 ];
 
 function ResponsiveAppBar({ isAuth, handleLogout }) {
-  const [anchorElNav, setAnchorElNav] = useState(null); // useState
+  const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
 
   const handleOpenNavMenu = (event) => {
@@ -44,7 +45,6 @@ function ResponsiveAppBar({ isAuth, handleLogout }) {
   };
 
   useEffect(() => {
-    // Bu etki, isAuth durumu değiştiğinde tetiklenecek
     console.log('Auth status updated:', isAuth);
   }, [isAuth]);
 
@@ -52,7 +52,7 @@ function ResponsiveAppBar({ isAuth, handleLogout }) {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Avatar alt="Remy Sharp" src={avatarGif} /> {/* Use the imported GIF */}
+          <Avatar alt="Remy Sharp" src={avatarGif} sx={{ display: { xs: 'none', md: 'flex' }, mr: 2 }} />
           <Typography
             variant="h6"
             noWrap
@@ -68,7 +68,7 @@ function ResponsiveAppBar({ isAuth, handleLogout }) {
               textDecoration: 'none',
             }}
           >
-            ook Store
+            Book Store
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -80,7 +80,7 @@ function ResponsiveAppBar({ isAuth, handleLogout }) {
               onClick={handleOpenNavMenu}
               color="inherit"
             >
-              <AdbIcon />
+              <MenuIcon /> {/* Hamburger ikonu */}
             </IconButton>
             <Menu
               id="menu-appbar"
@@ -126,6 +126,7 @@ function ResponsiveAppBar({ isAuth, handleLogout }) {
           >
             Book Store
           </Typography>
+          
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'center' }}>
             {pages.map((page) => (
               <Button
@@ -139,10 +140,11 @@ function ResponsiveAppBar({ isAuth, handleLogout }) {
               </Button>
             ))}
           </Box>
+          
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                 <Avatar alt="User Avatar" src="../../images/avatar.gif" />
+                <Avatar alt="User Avatar" src={avatarGif} />
               </IconButton>
             </Tooltip>
             {isAuth ? (

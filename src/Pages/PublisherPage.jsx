@@ -15,8 +15,9 @@ const PublisherPage = () => {
   const [updateModalIsOpen, setUpdateModalIsOpen] = useState(false);
 
   // Tüm yayınevlerini çeker
+  const API_URL = '/api/v1/publishers';
   const fetchPublishers = () => {
-    axios.get('http://localhost:8080/api/v1/publishers')
+    axios.get(API_UR)
       .then(response => {
         setPublishers(response.data);
         setFilteredPublishers(response.data); // Başlangıçta tüm yayınevleri gösteriliyor
@@ -31,7 +32,7 @@ const PublisherPage = () => {
 
   // Yayımcı ekleme fonksiyonu
   const handleAddPublisher = (publisherData) => {
-    axios.post('http://localhost:8080/api/v1/publishers', publisherData)
+    axios.post(API_URL, publisherData)
       .then(() => {
         setModalMessage('Yayımcı başarıyla eklendi!');
         setModalType('success');
@@ -48,7 +49,7 @@ const PublisherPage = () => {
 
   // Yayımcı güncelleme fonksiyonu
   const handleUpdatePublisher = (publisherData) => {
-    axios.put(`http://localhost:8080/api/v1/publishers/${publisherData.id}`, publisherData)
+    axios.put(`${API_URL}/${publisherData.id}`, publisherData)
       .then(() => {
         setModalMessage('Yayınevi başarıyla güncellendi!');
         setModalType('success');
@@ -67,7 +68,7 @@ const PublisherPage = () => {
 
   // Yayımcı silme fonksiyonu
   const handleDeletePublisher = (id) => {
-    axios.delete(`http://localhost:8080/api/v1/publishers/${id}`)
+    axios.delete(`${API_URL}/${id}`)
       .then(() => {
         setModalMessage('Yayımcı başarıyla silindi!');
         setModalType('success');
@@ -89,7 +90,7 @@ const PublisherPage = () => {
       return;
     }
 
-    axios.get(`http://localhost:8080/api/v1/publishers/${id}`)
+    axios.get(`${API_URL}/${id}`)
       .then(response => {
         if (response.data) {
           setFilteredPublishers([response.data]); // ID'ye göre yayınevini göster

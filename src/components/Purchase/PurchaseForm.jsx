@@ -14,7 +14,7 @@ const PurchaseForm = ({ onSubmit }) => {
 
   useEffect(() => {
     // Kitapları almak için API'ye istek yapma
-    axios.get('http://localhost:8080/api/v1/books')
+    axios.get('/api/v1/books')
       .then(response => {
         setBooks(response.data);
       })

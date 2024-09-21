@@ -15,8 +15,9 @@ const AuthorPage = () => {
   const [updateModalIsOpen, setUpdateModalIsOpen] = useState(false);
 
   // Tüm yazarları çeker
+  const API_URL = '/api/v1/authors';
   const fetchAuthors = () => {
-    axios.get('http://localhost:8080/api/v1/authors')
+    axios.get(API_URL)
       .then(response => {
         setAuthors(response.data);
         setFilteredAuthors(response.data); // Başlangıçta tüm yazarlar gösteriliyor
@@ -31,7 +32,7 @@ const AuthorPage = () => {
 
   // Yazar ekleme fonksiyonu
   const handleAddAuthor = (authorData) => {
-    axios.post('http://localhost:8080/api/v1/authors', authorData)
+    axios.post(API_URL, authorData)
       .then(() => {
         setModalMessage('Yazar başarıyla eklendi!');
         setModalType('success');
@@ -48,7 +49,7 @@ const AuthorPage = () => {
 
   // Yazar güncelleme fonksiyonu
   const handleUpdateAuthor = (authorData) => {
-    axios.put(`http://localhost:8080/api/v1/authors/${authorData.id}`, authorData)
+    axios.put(`${API_URL}/${authorData.id}`, authorData)
       .then(() => {
         setModalMessage('Yazar başarıyla güncellendi!');
         setModalType('success');
@@ -67,7 +68,7 @@ const AuthorPage = () => {
 
   // Yazar silme fonksiyonu
   const handleDeleteAuthor = (id) => {
-    axios.delete(`http://localhost:8080/api/v1/authors/${id}`)
+    axios.delete(`${API_URL}/${id}`)
       .then(() => {
         setModalMessage('Yazar başarıyla silindi!');
         setModalType('success');
@@ -89,7 +90,7 @@ const AuthorPage = () => {
       return;
     }
 
-    axios.get(`http://localhost:8080/api/v1/authors/${id}`)
+    axios.get(`${API_URL}/${id}`)
       .then(response => {
         if (response.data) {
           setFilteredAuthors([response.data]); // ID'ye göre yazarı göster
