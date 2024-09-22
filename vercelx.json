@@ -1,0 +1,9 @@
+{
+    "rewrites": [
+      {
+        "source": "/api/:path*",
+        "destination": "https://kitap-yonetim-sistemi-backend.onrender.com/:path*"
+      }
+    ]
+  }
+  
