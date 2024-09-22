@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import { TextField, Button, Stack, MenuItem, FormControl, InputLabel, Select } from '@mui/material';
 
-const UpdateModal = ({ isOpen, onClose, book, onUpdateBook, authors, publishers }) => {
+const UpdateModal = ({ isOpen, onClose, book, onUpdateBook, authors, publishers, categories }) => {
   const [formData, setFormData] = useState({
     name: '',
     publicationYear: '',
+    stock: '',
     author: '',
-    publisher: ''
+    publisher: '',
+    categories: []
   });
 
   useEffect(() => {
@@ -15,8 +17,10 @@ const UpdateModal = ({ isOpen, onClose, book, onUpdateBook, authors, publishers 
       setFormData({
         name: book.name || '',
         publicationYear: book.publicationYear || '',
-        author: book.author ? book.author.id : '', // author ID
-        publisher: book.publisher ? book.publisher.id : '' // publisher ID
+        stock: book.stock || '',
+        author: book.author ? book.author.id : '',
+        publisher: book.publisher ? book.publisher.id : '',
+        categories: book.categories.map(category => category.id) || []
       });
     }
   }, [book]);
@@ -32,8 +36,10 @@ const UpdateModal = ({ isOpen, onClose, book, onUpdateBook, authors, publishers 
       ...book,
       name: formData.name,
       publicationYear: formData.publicationYear,
+      stock: formData.stock,
       author: authors.find(a => a.id === formData.author) || null,
-      publisher: publishers.find(p => p.id === formData.publisher) || null
+      publisher: publishers.find(p => p.id === formData.publisher) || null,
+      categories: formData.categories.map(categoryId => categories.find(c => c.id === categoryId))
     };
     onUpdateBook(updatedBook);
   };
@@ -78,6 +84,13 @@ const UpdateModal = ({ isOpen, onClose, book, onUpdateBook, authors, publishers 
             onChange={handleChange}
             required
           />
+          <TextField
+            label="Stok"
+            name="stock"
+            type="number"
+            value={formData.stock}
+            onChange={handleChange}
+          />
           <FormControl fullWidth required>
             <InputLabel>Yazar</InputLabel>
             <Select
@@ -108,9 +121,39 @@ const UpdateModal = ({ isOpen, onClose, book, onUpdateBook, authors, publishers 
               ))}
             </Select>
           </FormControl>
+          <FormControl fullWidth required>
+            <InputLabel>Kategoriler</InputLabel>
+            <Select
+              multiple
+              name="categories"
+              value={formData.categories}
+              onChange={handleChange}
+              label="Kategoriler"
+            >
+              {categories.map((category) => (
+                <MenuItem key={category.id} value={category.id}>
+                  {category.name}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
           <Stack direction="row" spacing={2} justifyContent="center">
-            <Button type="submit" variant="contained" color="primary">Güncelle</Button>
-            <Button onClick={onClose} variant="outlined" color="secondary">Kapat</Button>
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              sx={{ width: '100px' }}
+            >
+              Güncelle
+            </Button>
+            <Button
+              onClick={onClose}
+              variant="outlined"
+              color="secondary"
+              sx={{ width: '100px' }}
+            >
+              Kapat
+            </Button>
           </Stack>
         </Stack>
       </form>

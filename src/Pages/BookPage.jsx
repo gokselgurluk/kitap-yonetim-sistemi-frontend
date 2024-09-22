@@ -6,8 +6,9 @@ import BookForm from '../components/Book/BookForm';
 import ModalComponent from '../components/ModalComponent';
 
 const API_URL = 'https://kitap-yonetim-sistemi-backend.onrender.com/api/v1/books';
-const AUTHORS_URL = 'https://kitap-yonetim-sistemi-backend.onrender.com/api/v1/authors'; // Yazarlar API'si
-const PUBLISHERS_URL = 'https://kitap-yonetim-sistemi-backend.onrender.com/api/v1/publishers'; // Yayınevleri API'si
+const AUTHORS_URL = 'https://kitap-yonetim-sistemi-backend.onrender.com/api/v1/authors';
+const PUBLISHERS_URL = 'https://kitap-yonetim-sistemi-backend.onrender.com/api/v1/publishers';
+const CATEGORIES_URL = 'https://kitap-yonetim-sistemi-backend.onrender.com/api/v1/categories'; // Kategoriler API'si
 
 const BookPage = () => {
   const [books, setBooks] = useState([]);
@@ -20,9 +21,10 @@ const BookPage = () => {
   const [modalMessage, setModalMessage] = useState('');
   const [modalType, setModalType] = useState(''); // 'success' veya 'error'
 
-  // Yazarlar ve yayınevleri
+  // Yazarlar, yayınevleri ve kategoriler
   const [authors, setAuthors] = useState([]);
   const [publishers, setPublishers] = useState([]);
+  const [categories, setCategories] = useState([]); // Kategoriler için state
 
   const fetchBooks = async () => {
     try {
@@ -55,9 +57,22 @@ const BookPage = () => {
     }
   };
 
+  const fetchCategories = async () => {
+    try {
+      const response = await axios.get(CATEGORIES_URL);
+      setCategories(response.data);
+    } catch (error) {
+      console.error('Kategoriler alınırken hata oluştu:', error);
+      setModalMessage('Kategoriler alınırken bir hata oluştu.');
+      setModalType('error');
+      setModalIsOpen(true);
+    }
+  };
+
   useEffect(() => {
     fetchBooks();
     fetchAuthorsAndPublishers();
+    fetchCategories(); // Kategorileri de al
   }, []);
 
   const handleAddBook = async (newBook) => {
@@ -78,7 +93,7 @@ const BookPage = () => {
   const handleUpdateBook = async (updatedBook) => {
     try {
       const response = await axios.put(`${API_URL}/${updatedBook.id}`, updatedBook);
-      if (response.status === 200) { // Yanıtın başarılı olduğunu doğrula
+      if (response.status === 200) {
         setModalMessage('Kitap başarıyla güncellendi!');
         setModalType('success');
         setIsUpdateModalOpen(false);
@@ -116,14 +131,11 @@ const BookPage = () => {
   const handleSearchBook = (searchId) => {
     try {
       if (!searchId) {
-        // Arama yapılmadıysa, tüm kitapları göster
         setFilteredBooks(books);
       } else {
-        // ID'ye göre kitapları filtrele
         const filtered = books.filter(book => book.id.toString() === searchId);
         setFilteredBooks(filtered);
-  
-        // Eğer ID'ye uygun kitap bulunamazsa, uygun mesaj göster
+
         if (filtered.length === 0) {
           setModalMessage(`Kitap ${searchId} bulunamadı.`);
           setModalType('error');
@@ -131,7 +143,6 @@ const BookPage = () => {
         }
       }
     } catch (error) {
-      // Hata durumunda modal mesajını ayarla
       console.error('Kitap arama sırasında bir hata oluştu:', error);
       setModalMessage('Kitap arama sırasında bir hata oluştu.');
       setModalType('error');
@@ -164,8 +175,9 @@ const BookPage = () => {
           onClose={() => setIsUpdateModalOpen(false)}
           book={selectedBook}
           onUpdateBook={handleUpdateBook}
-          authors={authors} // Yazarları geçir
-          publishers={publishers} // Yayınevlerini geçir
+          authors={authors}
+          publishers={publishers}
+          categories={categories} // Kategorileri geçir
         />
       )}
       <ModalComponent
