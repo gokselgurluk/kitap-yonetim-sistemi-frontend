@@ -15,6 +15,7 @@ const AuthorPage = () => {
   const [updateModalIsOpen, setUpdateModalIsOpen] = useState(false);
 
   // Tüm yazarları çeker
+  //https://kitap-yonetim-sistemi-backend.onrender.com
   const API_URL = '/api/v1/authors';
   const fetchAuthors = () => {
     axios.get(API_URL)

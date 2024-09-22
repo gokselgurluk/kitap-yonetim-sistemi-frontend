@@ -5,7 +5,7 @@ import TableComponent from '../components/Purchase/TableComponent';
 import UpdateModal from '../components/Purchase/UpdateModal';
 import ModalComponent from '../components/ModalComponent'; // ModalComponent import edildi
 
-const API_URL = 'http://localhost:8080/api/v1/borrows';
+const API_URL = '/api/v1/borrows';
 
 const PurchasePage = () => {
   const [purchases, setPurchases] = useState([]);

@@ -15,7 +15,7 @@ const PublisherPage = () => {
   const [updateModalIsOpen, setUpdateModalIsOpen] = useState(false);
 
   // API URL'sini güncelleyin
-  const API_URL = 'http://your-api-url.com/api/v1/publishers'; // Buraya gerçek API URL'sini yerleştirin
+  const API_URL = '/api/v1/publishers'; // Buraya gerçek API URL'sini yerleştirin
 
   // Tüm yayınevlerini çeker
   const fetchPublishers = () => {
