@@ -14,7 +14,7 @@ const PurchaseForm = ({ onSubmit }) => {
 
   useEffect(() => {
     // Kitapları almak için API'ye istek yapma
-    axios.get('api/v1/books')
+    axios.get('https://kitap-yonetim-sistemi-backend.onrender.com/api/v1/books')
       .then(response => {
         setBooks(response.data);
       })

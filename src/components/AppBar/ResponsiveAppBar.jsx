@@ -52,7 +52,7 @@ function ResponsiveAppBar({ isAuth, handleLogout }) {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Avatar alt="Remy Sharp" src={avatarGif} sx={{ display: { xs: 'none', md: 'flex' }, mr: 2 }} />
+          <Avatar alt="Remy Sharp" src={avatarGif} sx={{ display: { xs: 'none', md: 'flex' }, mr: 0 }} />
           <Typography
             variant="h6"
             noWrap
@@ -124,7 +124,8 @@ function ResponsiveAppBar({ isAuth, handleLogout }) {
               textDecoration: 'none',
             }}
           >
-            ook Store
+            
+            Book Store
           </Typography>
           
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'center' }}>
